@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -16,6 +17,11 @@ class ProductController extends Controller
     {
         $data['products'] = Product::all();
 
+        // $product = Product::where('id', 4)->first();
+        // dd($product->users);
+        
+        $user = User::where('id', 3)->first();
+        dd($user->products);
         return view('products.index', compact('data'));
     }
 

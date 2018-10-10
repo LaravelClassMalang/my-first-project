@@ -17,4 +17,9 @@ class Product extends Model
      * @var array
      */
     protected $fillable = ['name', 'price', 'stock', 'description', 'photo'];
+
+    public function users() {
+      return $this->belongsToMany('App\User', 'orders', 'product_id', 'user_id');
+    }
+
 }
