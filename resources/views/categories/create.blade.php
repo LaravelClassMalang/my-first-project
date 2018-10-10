@@ -37,16 +37,6 @@
                                 </div>
                             </div>
                             <div class='form-group row'>
-                                <label class='col-md-3 control-label'>Category</label>
-                                <div class='col-md-7'>
-                                    <select name="status" id="status" class="form-control">
-                                        @foreach($data['category'] as $key => $item)
-                                                <option value="{{$key}}">{{$item}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class='form-group row'>
                                 <label class='col-md-3 control-label'>Stock</label>
                                 <div class='col-md-7'>
                                     <input type='number' class='form-control' name='stock' placeholder="Stock" required value="{{ old('stock') }}">

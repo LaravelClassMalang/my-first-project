@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use App\User;
 use App\Category;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] = Product::with('category')->get();
-        
-        // $product = Product::where('id', 4)->first();
-        // dd($product->users);
-        
-        // $user = User::where('id', 3)->first();
-        // dd($user->products);
-        return view('products.index', compact('data'));
+        $categories = Category::all();
+
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -33,9 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['category'] = Category::pluck('name', 'id');
-
-        return view('products.create', compact('data'));
+        //
     }
 
     /**
@@ -46,14 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'     => 'required|unique:products,name',
-            'stock'     => 'required',
-            'price'     => 'required'
-        ]);
-
-        Product::create($request->only('name', 'stock', 'price'));
-        return redirect()->route('products.index');
+        //
     }
 
     /**
@@ -75,9 +59,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data['product'] = Product::find($id);
-
-        return view('products.edit', compact('data'));
+        //
     }
 
     /**
@@ -89,9 +71,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Product::where('id', '=', $id)->update($request->only('name', 'stock', 'price'));
-
-        return redirect()->route('products.index');
+        //
     }
 
     /**
@@ -102,8 +82,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-         Product::where('id', '=', $id)->delete();
-        
-        return redirect()->route('products.index');
+        //
     }
 }
