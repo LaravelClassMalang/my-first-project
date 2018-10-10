@@ -15,6 +15,7 @@
 //     return trans("messages.dashboard");
 // })->name("home");
 
+//this comment for index
 Route::get('/basetemplate', function() {
 	return view('welcome');
 });
