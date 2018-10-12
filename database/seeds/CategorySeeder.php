@@ -12,10 +12,8 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::insert([
-            "name"  => "obat-obatan",
-            "name"  => "minuman",
-            "name"  => "makanan"
-        ]);
+        for ($i=0; $i < 10; $i++) { 
+        	Category::create(['name' => 'Category '.$i]);
+        }
     }
 }

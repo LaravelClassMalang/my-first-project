@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function users() {
+      return $this->belongsToMany('App\User', 'orders', 'product_id', 'user_id');
+    }
+
 }
