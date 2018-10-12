@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-	/**
-	 * table name
-	 * @var string
-	 */
-    protected $table = 'orders';
-
+    protected $table = "orders";
+    protected $fillable = ["user_id","product_id"];
 }

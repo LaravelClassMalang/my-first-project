@@ -42,6 +42,16 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="" class="col-md-3 control-label">Category</label>
+                                <div class="col-md-7">
+                                    <select name="category_id" id="" class="form-control col-md-7">
+                                        @foreach($category as $category)
+                                            <option value="{{$category->id}}" {{($data['product']->category_id == $category->id)?"selected":""}}>{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-sm-offset-3 col-sm-5">
                                     <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Save</button>
                                     <a href="{{ route('products.index') }}" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> Back</a>

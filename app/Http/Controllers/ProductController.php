@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use App\User;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -16,12 +16,6 @@ class ProductController extends Controller
     public function index()
     {
         $data['products'] = Product::all();
-
-        // $product = Product::where('id', 4)->first();
-        // dd($product->users);
-        
-        $user = User::where('id', 3)->first();
-        dd($user->products);
         return view('products.index', compact('data'));
     }
 
@@ -32,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $bunch_of_category  = Category::all();
+        return view('products.create', compact('bunch_of_category'));
     }
 
     /**
@@ -44,12 +39,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'     => 'required|unique:products,name',
-            'stock'     => 'required',
-            'price'     => 'required'
+            'name'          => 'required|unique:products,name',
+            'stock'         => 'required',
+            'price'         => 'required',
+            'category_id'   => 'required'
         ]);
 
-        Product::create($request->only('name', 'stock', 'price'));
+        Product::create($request->only('name', 'stock', 'price','category_id'));
         return redirect()->route('products.index');
     }
 
@@ -72,9 +68,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data['product'] = Product::find($id);
-
-        return view('products.edit', compact('data'));
+        $data['product']    = Product::find($id);
+        $category           = Category::all();
+        return view('products.edit', compact('data', 'category'));
     }
 
     /**
@@ -86,7 +82,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Product::where('id', '=', $id)->update($request->only('name', 'stock', 'price'));
+        Product::where('id', '=', $id)->update($request->only('name', 'stock', 'price','category_id'));
 
         return redirect()->route('products.index');
     }
