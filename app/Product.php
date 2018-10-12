@@ -16,5 +16,10 @@ class Product extends Model
      * available database field
      * @var array
      */
-    protected $fillable = ['name', 'price', 'stock', 'description', 'photo'];
+    protected $fillable = ['name', 'price', 'stock', 'description', 'photo', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

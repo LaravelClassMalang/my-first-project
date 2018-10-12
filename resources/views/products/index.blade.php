@@ -13,7 +13,7 @@
 
 @section('content')
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="box box-primary">
                 <div class="box-body">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -67,6 +67,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Category</th>
                                         <th>Stock</th>
                                         <th>Price</th>
                                         <th>Action</th>
@@ -77,6 +78,7 @@
                                         <tr>
                                             <td></td>
                                             <td>{{ $product->name }}</td>
+                                            <td>{{ $product->category->name }}</td>
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ $product->price }}</td>
                                             <td class="text-center">
