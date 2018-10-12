@@ -28,5 +28,8 @@ Route::middleware("localization")->group(function() {
 	// Route::resource("dashboard", "DashboardController");
 	Route::resource("products", "ProductController", ['except' => ['destroy'] ]);
 	Route::get('products/{products}/delete', ['as' => 'products.delete', 'uses' => 'ProductController@destroy']);
+
+	Route::resource("category", "CategoryController", ['except' => ['destroy'] ]);
+	Route::get('category/{category}/delete', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
 });
 

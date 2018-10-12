@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Category;
+use Validator;
 
-class DashboardController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        // $users->toArray());
-        return view('user', compact('users'));
-        // return "Ini halaman dashboard!";
-        // return app()->getLocale();
-        
-        // Method trans => Handle translation di laravel app
-        // Format => filename.property
-        // return trans("messages.dashboard");
+        $bunch_of_category   = Category::all();
+        return view('category.index', compact('bunch_of_category'));
     }
 
     /**
@@ -33,7 +26,9 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        // Create page
+        //
+        $bunch_of_category = Category::all();
+        return view('category.create', compact('bunch_of_category'));
     }
 
     /**
@@ -44,7 +39,11 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        // Store data
+        $request->validate([
+            'name'  => 'required|string'
+        ]);
+        Category::create($request->only('name'));
+        return redirect()->route('category.index');
     }
 
     /**
@@ -55,7 +54,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        // Detail data
+        //
     }
 
     /**
@@ -66,7 +65,8 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        // Edit data page
+        $category = Category::findOrFail($id);
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -78,7 +78,11 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Update data
+        $request->validate([
+            'name'  => 'required|string'
+        ]);
+        Category::where('id','=', $id)->update($request->only('name'));
+        return redirect()->route('category.index');
     }
 
     /**
@@ -89,6 +93,7 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        // Delete data
+        Category::where('id','=', $id)->delete();
+        return redirect()->route('category.index');
     }
 }
