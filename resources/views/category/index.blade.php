@@ -2,7 +2,7 @@
 
 @section('page-title')
 <h1>
-    <i class="fa fa-tachometer"></i> Products
+    <i class="glyphicon glyphicon-apple"></i> Category
 </h1>
 @endsection
 
@@ -22,7 +22,7 @@
                             <h3>Cari</h3>
                         </div>
                         <div class="x_content">
-                            <form class="form-inline" action="{{ route('products.index') }}" method="get">
+                            <form class="form-inline" action="{{ route('category.index') }}" method="get">
                                 <div class="form-group">
                                     <input type="text" name="search" placeholder="Nopol / Jenis" value="{{ Request::get('search') }}" class="form-control">
                                 </div>
@@ -54,9 +54,9 @@
                 <div class="box-body">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h3>List Products
+                            <h3>List Category
                            
-                            <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New
+                            <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New
                             </a>
                             <div class="clearfix"></div>
                         </div>
@@ -67,23 +67,17 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Stock</th>
-                                        <th>Price</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($data['products'] as $product)
+                                    @foreach($bunch_of_category as $category)
                                         <tr>
-                                            <td></td>
-                                            <td>{{ $product->name }}</td>
-                                            <td>{{ $product->category->name or 'undefined' }}</td>
-                                            <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $category->name }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('products.edit', ['id' => $product->id]) }}" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a>
-                                                <a onclick="return confirm('Delete this data ?')" href="{{ route('products.delete', ['id' => $product->id]) }}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a>
+                                                <a onclick="return confirm('Delete this data ?')" href="{{ route('category.delete', ['id' => $category->id]) }}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

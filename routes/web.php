@@ -15,6 +15,7 @@
 //     return trans("messages.dashboard");
 // })->name("home");
 
+//this comment for index
 Route::get('/basetemplate', function() {
 	return view('welcome');
 });
@@ -39,8 +40,13 @@ Route::middleware("localization")->group(function() {
 	Route::resource("products", "ProductController", ['except' => ['destroy'] ]);
 	Route::get('products/{products}/delete', ['as' => 'products.delete', 'uses' => 'ProductController@destroy']);
 
+
 	// Route::resource("dashboard", "DashboardController");
-	Route::resource("categories", "CategoryController", ['except' => ['destroy'] ]);
-	Route::get('categories/{categories}/delete', ['as' => 'categories.delete', 'uses' => 'CategoryController@destroy']);
+	// Route::resource("categories", "CategoryController", ['except' => ['destroy'] ]);
+	// Route::get('categories/{categories}/delete', ['as' => 'categories.delete', 'uses' => 'CategoryController@destroy']);
+
+	Route::resource("category", "CategoryController", ['except' => ['destroy'] ]);
+	Route::get('category/{category}/delete', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
+
 });
 

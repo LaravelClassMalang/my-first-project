@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 
-class DashboardController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        // $users->toArray());
-        return view('user', compact('users'));
-        // return "Ini halaman dashboard!";
-        // return app()->getLocale();
-        
-        // Method trans => Handle translation di laravel app
-        // Format => filename.property
-        // return trans("messages.dashboard");
+        //
     }
 
     /**
@@ -33,7 +23,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        // Create page
+        //
     }
 
     /**
@@ -44,7 +34,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        // Store data
+        //
     }
 
     /**
@@ -55,7 +45,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        // Detail data
+        //
     }
 
     /**
@@ -66,7 +56,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        // Edit data page
+        //
     }
 
     /**
@@ -78,7 +68,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Update data
+        //
     }
 
     /**
@@ -89,6 +79,6 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        // Delete data
+        //
     }
 }
