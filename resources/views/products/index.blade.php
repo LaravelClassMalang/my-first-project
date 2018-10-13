@@ -78,7 +78,7 @@
                                         <tr>
                                             <td></td>
                                             <td>{{ $product->name }}</td>
-                                            <td>{{ $product->category->name or '-' }}</td>
+                                            <td>{{ $product->category->name or 'undefined' }}</td>
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ $product->price }}</td>
                                             <td class="text-center">

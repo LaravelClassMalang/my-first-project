@@ -17,12 +17,13 @@ class ProductController extends Controller
     public function index()
     {
         $data['products'] = Product::with('category')->get();
-        
+        // $data['category'] = Category::where('id', 3)->first();
+        // dd($data['category']->products);
         // $product = Product::where('id', 4)->first();
         // dd($product->users);
         
-        // $user = User::where('id', 3)->first();
-        // dd($user->products);
+        $user = User::where('id', 3)->first();
+        dd($user->products->toArray());
         return view('products.index', compact('data'));
     }
 
