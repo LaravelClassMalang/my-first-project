@@ -54,3 +54,9 @@ Route::middleware("localization")->group(function() {
 
 });
 
+// route to show the login form
+Route::get('/admin/login', "Admin\HomeController@showLogin")->name("admin.show_login");
+
+// route to process the form
+Route::post('/admin/login', "Admin\HomeController@doLogin")->name("admin.login");
+
