@@ -35,11 +35,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // $data['category'] = Category::pluck('name', 'id');
+        $data['category'] = Category::pluck('name', 'id');
 
-        // return view('products.create', compact('data'));
-        $bunch_of_category  = Category::all();
-        return view('products.create', compact('bunch_of_category'));
+        return view('products.create', compact('data'));
 
     }
 

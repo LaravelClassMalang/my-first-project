@@ -1,22 +1,19 @@
 @extends('layouts.app')
 
-{{-- @yield('page-title') --}} {{-- clear --}}
 @section('page-title')
 <h1>
-    <i class="fa fa-users"></i> Users
+    <i class="fa fa-tachometer"></i> Categories
 </h1>
 @endsection
 
-{{-- @yield('breadcrumb') --}}
 @section('breadcrumb')
 <li><a href="#">Dashboard</a></li>
-<li class="active">Users</li>
+<li class="active">Categories</li>
 @endsection
 
-{{-- @yield('content') --}}
 @section('content')
 
-<div class="row">
+    <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="box box-primary">
                 <div class="box-body">
@@ -25,17 +22,14 @@
                             <h3>Cari</h3>
                         </div>
                         <div class="x_content">
-                            <form class="form-inline" action="{{ route('users.index') }}" method="get">
+                            <form class="form-inline" action="" method="get">
                                 <div class="form-group">
-                                    <input type="text" name="name" placeholder="Name" value="{{ Request::get('name') }}" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="email" placeholder="Email" value="{{ Request::get('email') }}" class="form-control">
+                                    <input type="text" name="search" placeholder="Name" value="{{ Request::get('search') }}" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-search"><i class="fa fa-search"></i> </button>
                                 </div>
-                                <a href="{{ route('users.index') }}" class="btn btn-info btn-search pull-right"><i class="fa fa-database"></i> Tampilkan Semua</a>
+                                <a href="{{ request()->url() }}" class="btn btn-info btn-search pull-right"><i class="fa fa-database"></i> Tampilkan Semua</a>
                             </form>
                         </div>
                     </div>
@@ -43,17 +37,17 @@
             </div>
         </div>
     </div>
-
-<div class="row">
+    
+    <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="box box-primary">
                 <div class="box-body">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h3>List Users
+                            <h3>List Category
                            
-    <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New
-    </a>
+                            <a href="{{ route('orders.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New
+                            </a>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -62,27 +56,26 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Email</th>
+                                        <th>Product</th>
+                                        <th>User</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    	@foreach( $users as $user)
-											<tr>
-												<td>{{ $number++ }}</td>
-												<td>{{ $user->name }}</td>
-												<td>{{ $user->email }}</td>
-                                                <td class="text-center">
-                                                <a href="{{ route('users.show', ['id' => $user->id]) }}" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>
+                                    @foreach($data['orders'] as $order)
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ $order->product->name }}</td>
+                                            <td>{{ $order->user->name }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ route('orders.show', ['id' => $order->id]) }}" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>
                                             </td>
-											</tr>
-										@endforeach
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                                 <div class="clearfix"></div>
                                 <div class="text-center">
-                                	{!! $users->appends(request()->all())->links() !!}
                                 </div>
                             </div>
                         </div>
