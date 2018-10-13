@@ -15,8 +15,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
+//         $categories = Category::all();
+
+//         return view('categories.index', compact('categories'));
+
         $bunch_of_category   = Category::all();
         return view('category.index', compact('bunch_of_category'));
+
     }
 
     /**
@@ -26,7 +31,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
         $bunch_of_category = Category::all();
         return view('category.create', compact('bunch_of_category'));
     }

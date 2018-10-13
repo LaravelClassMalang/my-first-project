@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\User;
 use App\Category;
 
 class ProductController extends Controller
@@ -15,7 +16,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] = Product::all();
+        $data['products'] = Product::with('category')->get();
+        // $data['category'] = Category::where('id', 3)->first();
+        // dd($data['category']->products);
+        // $product = Product::where('id', 4)->first();
+        // dd($product->users);
+        
+        // $user = User::where('id', 3)->first();
+        // dd($user->products->toArray());
+        // $data['products'] = Product::all();
         return view('products.index', compact('data'));
     }
 
@@ -26,8 +35,12 @@ class ProductController extends Controller
      */
     public function create()
     {
+        // $data['category'] = Category::pluck('name', 'id');
+
+        // return view('products.create', compact('data'));
         $bunch_of_category  = Category::all();
         return view('products.create', compact('bunch_of_category'));
+
     }
 
     /**

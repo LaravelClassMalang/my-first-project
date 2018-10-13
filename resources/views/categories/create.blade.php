@@ -37,16 +37,6 @@
                                 </div>
                             </div>
                             <div class='form-group row'>
-                                <label class='col-md-3 control-label'>Category</label>
-                                <div class='col-md-7'>
-                                    <select name="status" id="status" class="form-control">
-                                        @foreach($data['category'] as $key => $item)
-                                                <option value="{{$key}}">{{$item}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class='form-group row'>
                                 <label class='col-md-3 control-label'>Stock</label>
                                 <div class='col-md-7'>
                                     <input type='number' class='form-control' name='stock' placeholder="Stock" required value="{{ old('stock') }}">
@@ -56,16 +46,6 @@
                                 <label class='col-md-3 control-label'>Price</label>
                                 <div class='col-md-7'>
                                     <input type='number' class='form-control' name='price' placeholder="Price" required value="{{ old('price') }}">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="" class="col-md-3 control-label">Category</label>
-                                <div class="col-md-7">
-                                    <select name="category_id" class="form-control" id="">
-                                        @foreach($bunch_of_category as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
