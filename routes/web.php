@@ -25,6 +25,7 @@ Route::middleware("localization")->group(function() {
 
 	// GET DATA USERS
 	Route::get("/users", "UserController@index")->name("users.index");
+	Route::get("/users/{id}/show", "UserController@show")->name("users.show");
 
 	// CREATE DATA USER
 	Route::get("/users/create", "UserController@create")->name("users.create");
@@ -42,8 +43,11 @@ Route::middleware("localization")->group(function() {
 
 
 	// Route::resource("dashboard", "DashboardController");
-	// Route::resource("categories", "CategoryController", ['except' => ['destroy'] ]);
-	// Route::get('categories/{categories}/delete', ['as' => 'categories.delete', 'uses' => 'CategoryController@destroy']);
+	Route::resource("categories", "CategoryController", ['except' => ['destroy'] ]);
+	Route::get('categories/{categories}/delete', ['as' => 'categories.delete', 'uses' => 'CategoryController@destroy']);
+
+	Route::resource("orders", "OrderController", ['except' => ['destroy'] ]);
+	Route::get('orders/{orders}/delete', ['as' => 'orders.delete', 'uses' => 'OrderController@destroy']);
 
 	Route::resource("category", "CategoryController", ['except' => ['destroy'] ]);
 	Route::get('category/{category}/delete', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
