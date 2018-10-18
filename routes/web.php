@@ -26,6 +26,8 @@ Route::middleware("localization")->group(function() {
 	// GET DATA USERS
 	Route::get("/users", "UserController@index")->name("users.index");
 	Route::get("/users/{id}/show", "UserController@show")->name("users.show");
+	Route::get("/exportusers", "UserController@export")->name("users.export");
+	Route::get("/cacheuser", "UserController@testCache")->name("users.cache");
 
 	// CREATE DATA USER
 	Route::get("/users/create", "UserController@create")->name("users.create");
@@ -53,4 +55,13 @@ Route::middleware("localization")->group(function() {
 	Route::get('category/{category}/delete', ['as' => 'category.delete', 'uses' => 'CategoryController@destroy']);
 
 });
+
+// route to show the login form
+Route::get('/admin/login', "Admin\HomeController@showLogin")->name("admin.show_login");
+
+// route to process the form
+Route::post('/admin/login', "Admin\HomeController@doLogin")->name("admin.login");
+
+Route::get("/mail", "MailController@index")->name("mail.index");
+Route::post("/mail", "MailController@send")->name("mail.send");
 
