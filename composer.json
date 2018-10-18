@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "barryvdh/laravel-debugbar": "^3.2",
+        "box/spout": "^2.7",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
@@ -24,7 +26,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files" : [
+            "App/Helpers/Helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

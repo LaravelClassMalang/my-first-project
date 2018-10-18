@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Box\Spout\Reader\ReaderFactory;
+use Box\Spout\Writer\WriterFactory;
+use Box\Spout\Common\Type;
+use Illuminate\Support\Facades\Cache;
+
 
 class UserController extends Controller
 {
@@ -140,5 +145,39 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export()
+    {
+        $title = ['Name', 'Email'];
+        $fileName = 'Export Excel.xlsx';
+        $writer = WriterFactory::create(Type::XLSX); // for XLSX files
+        $customers = User::select('*'); // dapatkan seluruh data customer
+        
+        $writer->openToBrowser($fileName); // stream data directly to the browser
+        $writer->addRow($title); // tambahkan judul dibaris pertama
+        $customers->chunk(500, function($datas) use ( $writer ) {
+            foreach ($datas as $data) {
+                $writer->addRow([
+                    $data->name,
+                    $data->email
+                ]); // tambakan data data per baris
+            }
+        });
+
+        $writer->close();
+    }
+
+    public function testCache()
+    {
+        // $value = Cache::get('users-first', function () {
+        //     return User::first();
+        // });
+        $value = Cache::remember('users', 2, function () {
+            return User::first();
+        });
+        // dd(Cache::get('users'));
+        //$value = User::first();
+        dd($value);
     }
 }

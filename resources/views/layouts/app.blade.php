@@ -75,13 +75,13 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-user"></i>
-              <span class="hidden-xs">Laravel Class Malang</span>
+              <span class="hidden-xs">{{ auth()->user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <p>
-                  Ahmad Fatoni<br> Mentor
+                  {{ auth()->user()->name }}<br>
                   <small>fatoni@dot-indonesia.com</small>
                 </p>
               </li>

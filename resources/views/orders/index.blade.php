@@ -66,7 +66,7 @@
                                         <tr>
                                             <td></td>
                                             <td>{{ $order->product->name }}</td>
-                                            <td>{{ $order->user->name }}</td>
+                                            <td>{{ $order->user->name or '-' }}</td>
                                             <td class="text-center">
                                                 <a href="{{ route('orders.show', ['id' => $order->id]) }}" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>
                                             </td>

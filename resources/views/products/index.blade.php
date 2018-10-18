@@ -80,7 +80,7 @@
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->category->name or 'undefined' }}</td>
                                             <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->price }}</td>
+                                            <td>{{ toRupiah($product->price) }}</td>
                                             <td class="text-center">
                                                 <a href="{{ route('products.edit', ['id' => $product->id]) }}" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></a>
                                                 <a onclick="return confirm('Delete this data ?')" href="{{ route('products.delete', ['id' => $product->id]) }}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>

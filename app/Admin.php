@@ -10,5 +10,15 @@ class Admin extends Authenticatable
 
     protected $hidden = [
     	"password"
-    ];    
+    ];   
+
+    /**
+	 * Get the password for the user.
+	 *
+	 * @return string
+	 */
+	// public function getAuthPassword()
+	// {
+	//     return $this->pass;
+	// } 
 }
